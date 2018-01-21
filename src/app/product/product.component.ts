@@ -9,7 +9,7 @@ import { Product } from '../product';
 export class ProductComponent implements OnInit {
   product: Product = {
     asin: "B01887A4E4",
-    keywordListText: "serving tray,serving trays, decorative serving trays"
+    keywordListText: "serving tray,serving trays, decorative serving trays, clear tray"
   };
   constructor() { }
 
