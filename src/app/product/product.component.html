@@ -3,5 +3,11 @@
     <button *ngIf="editMode == MODE_EDIT" (click)="onSave()">Save</button>
     <button *ngIf="editMode == MODE_VIEW" (click)="onEnterEditMode()">Edit</button>
     <textarea *ngIf="editMode == MODE_EDIT" [(ngModel)]="product.keywordListText" placeholder="name" rows="10"></textarea>
-    <div *ngIf="editMode == MODE_VIEW">{{product.keywordListText}}</div>
+    <div *ngIf="editMode == MODE_VIEW">
+        <table *ngFor='let keyword of product.keywordList' >
+            <tr>
+                <td>{{keyword}}</td>
+            </tr>
+        </table>
+    </div>
 </div>
