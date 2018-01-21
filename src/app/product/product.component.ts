@@ -7,28 +7,28 @@ import { Product } from '../product';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  MODE_EDIT:string = "edit";
-  MODE_VIEW:string = "view";
+  MODE_EDIT = 'edit';
+  MODE_VIEW = 'view';
 
 
   product: Product = {
-    asin: "B01887A4E4",
-    keywordListText: "serving tray\nserving trays\ndecorative serving trays\nclear tray",
-    keywordList:new Array<string>()
+    asin: 'B01887A4E4',
+    keywordListText: 'serving tray\nserving trays\ndecorative serving trays\nclear tray',
+    keywordList: new Array<string>()
   };
-  editMode:string = this.MODE_EDIT;
+  editMode: string = this.MODE_EDIT;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onSave():void{
+  onSave(): void {
     this.product.keywordList = this.product.keywordListText.split('\n');
-    this.editMode = this.MODE_VIEW;    
+    this.editMode = this.MODE_VIEW;
   }
 
-  onEnterEditMode():void{
+  onEnterEditMode(): void {
     this.editMode = this.MODE_EDIT;
   }
 
