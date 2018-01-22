@@ -1,10 +1,10 @@
-<h5>ASIN: {{ product.asin }} </h5>
+<h5>ASIN:  <input type="text" [(ngModel)]="product.asin"></h5>
 <div><span>keywords: </span> <br>
     <button *ngIf="editMode == MODE_EDIT" (click)="onSave()">Save</button>
     <button *ngIf="editMode == MODE_VIEW" (click)="onEnterEditMode()">Edit</button>
     <textarea *ngIf="editMode == MODE_EDIT" [(ngModel)]="product.keywordListText" placeholder="name" rows="10"></textarea>
     <div *ngIf="editMode == MODE_VIEW">
-        <table *ngFor='let keyword of product.keywordList' >
+        <table class="table  table-striped table-condensed keyword-list-table" *ngFor='let keyword of product.keywordList' >
             <tr>
                 <td>{{keyword}}</td>
             </tr>
