@@ -4,20 +4,23 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
-import { ProductsComponent } from './products/products.component';
+import { ProjectComponent } from './project/project.component';
+import { AngularWebStorageModule } from 'angular-web-storage';
+import { StorageService } from './storage.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
-    ProductsComponent
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AngularWebStorageModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [StorageService, AngularWebStorageModule]
 })
 export class AppModule { }

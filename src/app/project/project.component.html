@@ -1,0 +1,12 @@
+<div>
+  <h3>Project&nbsp;&nbsp;&nbsp;Name:
+    <input type="text" [(ngModel)]="project.name">
+    <br/>Target ASIN:
+    <input type="text" [(ngModel)]="project.asin">
+  </h3>
+</div>
+<button (click)="onSaveProject()">Save Project</button>
+<div *ngFor="let product of project.products">
+  <app-product></app-product>
+</div>
+<button (click)="onAddProduct()">Add</button>
