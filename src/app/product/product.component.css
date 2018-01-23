@@ -5,3 +5,8 @@ table.keyword-list-table {
 table.keyword-list-table tr {
   line-height: 25px;
 }
+
+div.product {
+  display:inline;
+  float:left;
+}
