@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../product';
 
 @Component({
@@ -18,14 +18,19 @@ export class ProductComponent implements OnInit {
   //   keywordList: new Array<string>()
   // };
 
-  product: Product = new Product();
+  @Input() product: Product;
 
-  constructor() { }
+  constructor() {
+
+   }
 
   ngOnInit() {
+    this.setModes();
   }
 
   onSaveList(): void {
+    // tslint:disable-next-line:curly
+    if (!this.product.keywordListText) return;
     this.product.keywordList = this.product.keywordListText.split('\n');
     this.listEditMode = this.MODE_VIEW;
     this.onSaveAsin(); // close editing on asin as well
@@ -45,6 +50,11 @@ export class ProductComponent implements OnInit {
 
   isNew(): boolean {
     return !this.product.asin;
+  }
+
+  setModes(): void {
+    this.listEditMode = !this.product.asin ? this.MODE_EDIT : this.MODE_VIEW;
+    this.asinEditMode = !this.product.asin ? this.MODE_EDIT : this.MODE_VIEW;
   }
 
 }

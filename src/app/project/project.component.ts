@@ -26,7 +26,10 @@ export class ProjectComponent implements OnInit {
   }
 
   onSaveProject(): void {
-    // TODO: project keywords are not set when saving
     this.storage.set(this.project.name, this.project);
+  }
+
+  onLoadProject(): void {
+    this.project = this.storage.get(this.project.name);
   }
 }
