@@ -22,8 +22,7 @@ export class KeyedCollection<T> implements IKeyedCollection<T> {
     }
 
     public Add(key: string, value: T) {
-        if (!this.items.hasOwnProperty(key))
-        {
+        if (!this.items.hasOwnProperty(key)) {
           this.count++;
         }
 
@@ -43,9 +42,9 @@ export class KeyedCollection<T> implements IKeyedCollection<T> {
     }
 
     public Keys(): string[] {
-        let keySet: string[] = [];
+        const keySet: string[] = [];
 
-        for (let prop in this.items) {
+        for (const prop in this.items) {
             if (this.items.hasOwnProperty(prop)) {
                 keySet.push(prop);
             }
@@ -55,7 +54,7 @@ export class KeyedCollection<T> implements IKeyedCollection<T> {
     }
 
     public Values(): T[] {
-        let values: T[] = [];
+        const values: T[] = [];
 
         for (const prop in this.items) {
             if (this.items.hasOwnProperty(prop)) {

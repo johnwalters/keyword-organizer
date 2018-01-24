@@ -7,7 +7,8 @@ import { ProductComponent } from './product/product.component';
 import { ProjectComponent } from './project/project.component';
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { StorageService } from './storage.service';
-
+import { LocalStorageService } from './localStorageService';
+import { KeywordService } from './keyword.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,6 @@ import { StorageService } from './storage.service';
     AngularWebStorageModule
   ],
   bootstrap: [AppComponent],
-  providers: [StorageService, AngularWebStorageModule]
+  providers: [StorageService, LocalStorageService, KeywordService, AngularWebStorageModule]
 })
 export class AppModule { }
