@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../product';
+import { Project } from '../project';
 
 @Component({
   selector: 'app-product',
@@ -11,6 +12,7 @@ export class ProductComponent implements OnInit {
   MODE_VIEW = 'view';
   listEditMode: string = this.MODE_EDIT;
   asinEditMode: string = this.MODE_EDIT;
+  isConfirmRemovePending: boolean;
 
   // product: Product = {
   //   asin: 'B01887A4E4',
@@ -19,6 +21,7 @@ export class ProductComponent implements OnInit {
   // };
 
   @Input() product: Product;
+  @Input() parentProject: Project;
 
   constructor() {
 
@@ -26,6 +29,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.setModes();
+    this.isConfirmRemovePending = false;
   }
 
   onSaveList(): void {
@@ -48,6 +52,24 @@ export class ProductComponent implements OnInit {
     this.asinEditMode = this.MODE_EDIT;
   }
 
+  onDelete(): void {
+    if (this.product.asin) {
+      this.isConfirmRemovePending = true;
+      return;
+    }
+    this.product.isDeleted = true;
+    this.isConfirmRemovePending = false;
+  }
+
+  onDeleteConfirm(): void {
+    this.product.isDeleted = true;
+    this.isConfirmRemovePending = false;
+  }
+
+  onDeleteCancel(): void {
+    this.isConfirmRemovePending = false;
+  }
+
   isNew(): boolean {
     return !this.product.asin;
   }
@@ -56,5 +78,9 @@ export class ProductComponent implements OnInit {
     this.listEditMode = !this.product.asin ? this.MODE_EDIT : this.MODE_VIEW;
     this.asinEditMode = !this.product.asin ? this.MODE_EDIT : this.MODE_VIEW;
   }
+
+  // onRemove(): void {
+  //   this.product = null;
+  // }
 
 }
