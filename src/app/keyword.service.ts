@@ -21,7 +21,7 @@ export class KeywordService {
     if (!this.appContext().projectList.ContainsKey(projectNameKey)) {
       return null;
     }
-    var project = this.appContext().projectList.Item(projectNameKey);
+    const project = this.appContext().projectList.Item(projectNameKey);
     return project;
   }
 
