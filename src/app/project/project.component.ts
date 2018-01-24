@@ -33,11 +33,11 @@ export class ProjectComponent implements OnInit {
       cleanProducts.push(prod);
     }
     this.project.products = cleanProducts;
-    this.storage.set(this.project.name, this.project);
+    this.storage.set(this.project.name.toLowerCase(), this.project);
   }
 
   onLoadProject(): void {
-    const existingProject = this.storage.get(this.project.name);
+    const existingProject = this.storage.get(this.project.name.toLowerCase());
     // tslint:disable-next-line:curly
     if (!existingProject) return;
     this.project = existingProject;
