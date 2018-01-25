@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './localStorageService';
 import { KeywordContext } from './keywordContext';
-import { KeywordContextData } from './keywordContextData';
+import { KeywordContextData } from './serialization/keywordContextData';
 import { Project } from './project';
 import { Product } from './product';
 import { appendNgContent } from '@angular/core/src/view/ng_content';

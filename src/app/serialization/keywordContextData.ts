@@ -1,7 +1,7 @@
 import { ProjectData } from './projectData';
-import { KeywordContext } from './keywordContext';
-import { KeyedCollection } from './KeyedCollection';
-import { Project } from './project';
+import { KeywordContext } from '../keywordContext';
+import { KeyedCollection } from '../KeyedCollection';
+import { Project } from '../project';
 
 export class KeywordContextData {
   appStorageDate: Number;
@@ -27,7 +27,6 @@ export class KeywordContextData {
     data.appStorageDate = context.appStorageDate;
     data.projectList = new Array<ProjectData>();
     context.projectList.Values().forEach(function (project) {
-      // convert to ProjectData
       data.projectList.push(ProjectData.toData(project));
     });
     return data;

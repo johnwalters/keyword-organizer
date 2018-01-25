@@ -1,6 +1,6 @@
-import { KeywordMeta } from './keywordMeta';
-import { Product } from './product';
-import { KeyedCollection } from './KeyedCollection';
+import { KeywordMeta } from '../keywordMeta';
+import { Product } from '../product';
+import { KeyedCollection } from '../KeyedCollection';
 
 export class ProductData {
     asin: string;

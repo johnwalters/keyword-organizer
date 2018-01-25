@@ -1,7 +1,7 @@
 import { ProductData } from './productData';
-import { Project } from './project';
-import { KeyedCollection } from './KeyedCollection';
-import { Product } from './product';
+import { Project } from '../project';
+import { KeyedCollection } from '../KeyedCollection';
+import { Product } from '../product';
 
 export class ProjectData {
   name: string;
