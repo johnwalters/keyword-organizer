@@ -12,6 +12,7 @@ import { KeywordService } from '../keyword.service';
 })
 export class ProjectComponent implements OnInit {
   project = new Project();
+  isConfirmRemovePending: boolean;
 
 
   constructor(
@@ -27,7 +28,9 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.project.name = id;
+    // tslint:disable-next-line:curly
     if (!id) return;
+    this.isConfirmRemovePending = false;
     this.onLoadProject();
   }
 
@@ -35,26 +38,30 @@ export class ProjectComponent implements OnInit {
     this.project.products.push(new Product());
   }
 
-  onSaveProject(): void {
-    // const cleanProducts = new Array<Product>();
-    // for ( const prod of this.project.products ) {
-    //   // tslint:disable-next-line:curly
-    //   if (!prod.asin || prod.isDeleted) continue;
-    //   cleanProducts.push(prod);
-    // }
-    // this.project.products = cleanProducts;
-    // this.storage.set(this.project.name.toLowerCase(), this.project);
+  onDelete(): void {
+    if (this.project.name) {
+      this.isConfirmRemovePending = true;
+      return;
+    }
+    this.project.isDeleted = true;
+    this.isConfirmRemovePending = false;
+  }
 
+  onDeleteConfirm(): void {
+    this.project.isDeleted = true;
+    this.isConfirmRemovePending = false;
+  }
+
+  onDeleteCancel(): void {
+    this.isConfirmRemovePending = false;
+  }
+
+  onSaveProject(): void {
     // save with keywordService
     this.keywordService.saveProject(this.project);
   }
 
   onLoadProject(): void {
-    // const existingProject = this.storage.get(this.project.name.toLowerCase());
-    // // tslint:disable-next-line:curly
-    // if (!existingProject) return;
-    // this.project = existingProject;
-
     // get with keywordService
     this.project = this.keywordService.getProject(this.project.name);
     if (!this.project) {

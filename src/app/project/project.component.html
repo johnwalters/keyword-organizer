@@ -1,7 +1,12 @@
 <div>
   <h3>Project&nbsp;&nbsp;&nbsp;Name:
     <input type="text" [(ngModel)]="project.name">
-    <!-- <button (click)="onLoadProject()">Load Project</button> -->
+    <button class="btn btn-default btn-xs"   (click)="onDelete()">Remove Project</button>
+    <span *ngIf="isConfirmRemovePending" class="deleteConfirmPending">
+        <button class="btn btn-default btn-xs"  (click)="onDeleteCancel()">Cancel Remove Project</button>
+        <button class="btn btn-danger btn-xs"  (click)="onDeleteConfirm()">Confirm Remove Project</button>
+
+    </span>
     <br/>Target ASIN:
     <input type="text" [(ngModel)]="project.asin">
   </h3>
