@@ -9,17 +9,21 @@ import { AngularWebStorageModule } from 'angular-web-storage';
 import { StorageService } from './storage.service';
 import { LocalStorageService } from './localStorageService';
 import { KeywordService } from './keyword.service';
+import { AppRoutingModule } from './/app-routing.module';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
-    ProjectComponent
+    ProjectComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AngularWebStorageModule
+    AngularWebStorageModule,
+    AppRoutingModule
   ],
   bootstrap: [AppComponent],
   providers: [StorageService, LocalStorageService, KeywordService, AngularWebStorageModule]

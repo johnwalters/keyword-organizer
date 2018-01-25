@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { Product } from '../product';
 import { Project } from '../project';
-import { StorageService } from '../storage.service';
 import { KeywordService } from '../keyword.service';
 
 @Component({
@@ -13,13 +14,20 @@ export class ProjectComponent implements OnInit {
   project = new Project();
 
 
-  constructor(private storage: StorageService, private keywordService: KeywordService) {
+  constructor(
+    private keywordService: KeywordService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {
     if (this.project.products.length === 0) {
       this.project.products.push(new Product());
     }
   }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.project.name = id;
+    this.onLoadProject();
   }
 
   onAddProduct(): void {

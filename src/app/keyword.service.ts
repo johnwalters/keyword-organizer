@@ -25,6 +25,15 @@ export class KeywordService {
     return project;
   }
 
+  getAllProjects(): Array<Project> {
+    const projectList = new Array<Project>();
+    this.appContext().projectList.Values().forEach(function (project) {
+      projectList.push(project);
+    });
+    return projectList;
+  }
+
+
   saveProject(project: Project): void {
     const projectNameKey = project.name.toLowerCase();
     const cleanProducts = new Array<Product>();
