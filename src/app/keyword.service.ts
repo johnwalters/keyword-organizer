@@ -51,7 +51,7 @@ export class KeywordService {
     this.appContext().appStorageDate = Date.now();
 
     // serialize and save
-    const contextData = KeywordContext.toData(this.appContext());
+    const contextData = KeywordContextData.toData(this.appContext());
     this.storage.write(
       KeywordContext.appStorageKey,
       JSON.stringify(contextData)
@@ -68,7 +68,7 @@ export class KeywordService {
         this._context = new KeywordContext();
         return this._context;
       }
-      this._context = KeywordContext.fromData(existingAppContextData);
+      this._context = KeywordContextData.fromData(existingAppContextData);
     }
     return this._context;
   }
