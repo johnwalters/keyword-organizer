@@ -43,17 +43,22 @@ export class ProjectComponent implements OnInit {
       this.isConfirmRemovePending = true;
       return;
     }
-    this.project.isDeleted = true;
-    this.isConfirmRemovePending = false;
+    this.delete();
   }
 
   onDeleteConfirm(): void {
-    this.project.isDeleted = true;
-    this.isConfirmRemovePending = false;
+    this.delete();
   }
 
   onDeleteCancel(): void {
     this.isConfirmRemovePending = false;
+  }
+
+  delete(): void {
+    this.project.isDeleted = true;
+    this.isConfirmRemovePending = false;
+    this.onSaveProject();
+    this.goBack();
   }
 
   onSaveProject(): void {
@@ -67,5 +72,9 @@ export class ProjectComponent implements OnInit {
     if (!this.project) {
       this.project = new Project();
     }
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
