@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { LocalStorageService } from "./localStorageService";
-import { KeywordContext } from "./keywordContext";
-import { KeywordContextData } from "./keywordContextData";
-import { Project } from "./project";
-import { Product } from "./product";
-import { appendNgContent } from "@angular/core/src/view/ng_content";
+import { Injectable } from '@angular/core';
+import { LocalStorageService } from './localStorageService';
+import { KeywordContext } from './keywordContext';
+import { KeywordContextData } from './keywordContextData';
+import { Project } from './project';
+import { Product } from './product';
+import { appendNgContent } from '@angular/core/src/view/ng_content';
 
 @Injectable()
 export class KeywordService {
@@ -37,18 +37,19 @@ export class KeywordService {
     if (project.isDeleted) {
       this.appContext().projectList.Remove(projectNameKey);
     } else {
-      const cleanProducts = new Array<Product>();
+      const activeProducts = new Array<Product>();
       for (const prod of project.products) {
         // tslint:disable-next-line:curly
         if (!prod.asin || prod.isDeleted) continue;
-        cleanProducts.push(prod);
+        activeProducts.push(prod);
       }
-      project.products = cleanProducts;
+      project.products = activeProducts;
 
       this.appContext().projectList.Add(projectNameKey, project);
     }
 
     this.appContext().appStorageDate = Date.now();
+
     // serialize and save
     const contextData = KeywordContext.toData(this.appContext());
     this.storage.write(
