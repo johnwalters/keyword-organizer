@@ -10,6 +10,7 @@
     <br/>Target ASIN:
     <input type="text" [(ngModel)]="project.asin">
   </h3>
+  <a routerLink="/totals/{{project.name}}">Totals</a>
 </div>
 <button (click)="onSaveProject()">Save Project</button>
 <div *ngFor="let item of project.products">

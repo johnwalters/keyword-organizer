@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectComponent } from './project/project.component';
 import { ListComponent } from './list/list.component';
+import { TotalsComponent } from './totals/totals.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: 'list', component: ListComponent },
   { path: 'project/:id', component: ProjectComponent },
   { path: 'project', component: ProjectComponent },
+  { path: 'totals/:id', component: TotalsComponent },
 ];
 
 @NgModule({

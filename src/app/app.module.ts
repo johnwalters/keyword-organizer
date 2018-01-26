@@ -11,13 +11,15 @@ import { LocalStorageService } from './localStorageService';
 import { KeywordService } from './keyword.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { ListComponent } from './list/list.component';
+import { TotalsComponent } from './totals/totals.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     ProjectComponent,
-    ListComponent
+    ListComponent,
+    TotalsComponent
   ],
   imports: [
     BrowserModule,
