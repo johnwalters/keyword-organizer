@@ -35,7 +35,7 @@ export class ProductComponent implements OnInit {
   onSaveList(): void {
     // tslint:disable-next-line:curly
     if (!this.product.keywordListText) return;
-    this.product.keywordList = this.product.keywordListText.split('\n');
+    this.product.setKeywordListFromText();
     this.listEditMode = this.MODE_VIEW;
     this.onSaveAsin(); // close editing on asin as well
   }

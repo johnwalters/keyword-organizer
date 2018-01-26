@@ -1,5 +1,6 @@
 import { KeywordMeta } from './keywordMeta';
 import { KeyedCollection } from './KeyedCollection';
+import * as _ from 'underscore';
 
 export class Product {
     asin: string;
@@ -14,5 +15,10 @@ export class Product {
       this.keywordList = new Array<string>();
       this.keywordTotalsList = new KeyedCollection<KeywordMeta>();
       this.isDeleted = false;
+    }
+
+    setKeywordListFromText() {
+      this.keywordList = this.keywordListText.split('\n');
+      this.keywordList = _.uniq(this.keywordList);
     }
   }
