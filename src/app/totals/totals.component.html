@@ -4,14 +4,14 @@
 <button class="btn btn-default btn-xs"   (click)="project.process()">Process</button>
 <a routerLink="/project/{{project.name}}">Project</a>
 <div >
-  <table class="table  table-striped table-condensed keyword-list-table" >
+  <table class="keyword-totals-table" >
       <tr>
           <th>Keyword</th>
           <th>Count</th>
           <th>Percent</th>
       </tr>
-      <tbody *ngFor='let keywordmeta of project.totalsList()'>
-          <tr>
+      <tbody >
+          <tr *ngFor='let keywordmeta of project.totalsList()'>
               <td>{{keywordmeta.phrase}}</td>
               <td>{{keywordmeta.count}}</td>
               <td>{{keywordmeta.percent}}</td>
