@@ -6,14 +6,14 @@ export class ProductData {
     asin: string;
     keywordListText: string;
     keywordList: Array<string>;
-    keywordTotalsList: Array<KeywordMeta>;
+
     isDeleted: boolean;
 
     constructor() {
       this.asin = null,
       this.keywordListText = null;
       this.keywordList = new Array<string>();
-      this.keywordTotalsList = new Array<KeywordMeta>();
+
       this.isDeleted = false;
     }
 
@@ -23,10 +23,7 @@ export class ProductData {
       data.isDeleted = product.isDeleted;
       data.keywordListText = product.keywordListText;
       data.keywordList = product.keywordList;
-      data.keywordTotalsList = new Array<KeywordMeta>();
-      product.keywordTotalsList.Values().forEach(function (value) {
-          data.keywordTotalsList.push(value);
-      });
+
       return data;
     }
 
@@ -37,9 +34,7 @@ export class ProductData {
       product.keywordListText = data.keywordListText;
       product.keywordList = data.keywordList;
       product.keywordTotalsList = new KeyedCollection<KeywordMeta>();
-      data.keywordTotalsList.forEach(function (value) {
-          product.keywordTotalsList.Add(value.phrase, value);
-      });
+
       return product;
     }
   }
