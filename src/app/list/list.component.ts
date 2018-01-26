@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
 
   getProjects(): void {
     const allProjects = this.keywordService.getAllProjects();
-    var activeProjects = new Array<Project>();
+    const activeProjects = new Array<Project>();
     allProjects.forEach( function (value) {
         // tslint:disable-next-line:curly
         if (!value.isDeleted) {
