@@ -1,22 +1,38 @@
-/*
-function generateTable() {
-    var data = $('textarea[name=excel_data]').val();
+import { Product } from './product';
+
+export class ExcelGridParser {
+  products: Array<Product>;
+
+  constructor() {
+    this.products = new Array<Product>();
+  }
+
+  static toProducts(data: string): Array<Product> {
+    const products = new Array<Product>();
     console.log(data);
-var rows = data.split("\n");
+    const rows = data.split('\n');
+    let isFirstRow = true;
+    // tslint:disable-next-line:forin
+    for (const row in rows) {
+      const cells = rows[row].split('\t');
+      for (let cellIndex = 0; cellIndex < cells.length; cellIndex++) {
+        if (isFirstRow) {
+          const prod = new Product();
+          prod.asin = cells[cellIndex];
+          prod.keywordListText = null;
+          products.push(prod);
 
-var table = $('<table />');
+        } else {
+          const prodToUpdate = products[cellIndex];
+          prodToUpdate.keywordListText += '\n' + cells[cellIndex];
+        }
+      }
 
-for(var y in rows) {
-    var cells = rows[y].split("\t");
-    var row = $('<tr />');
-    for(var x in cells) {
-        row.append('<td>'+cells[x]+'</td>');
+      isFirstRow = false;
     }
-    table.append(row);
+    products.forEach(function(value) {
+      value.setKeywordListFromText();
+    });
+    return products;
+  }
 }
-
-// Insert into DOM
-$('#excel_table').html(table);
-}
-
-*/

@@ -12,6 +12,7 @@ import { KeywordService } from './keyword.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { ListComponent } from './list/list.component';
 import { TotalsComponent } from './totals/totals.component';
+import { CellsComponent } from './cells/cells.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TotalsComponent } from './totals/totals.component';
     ProductComponent,
     ProjectComponent,
     ListComponent,
-    TotalsComponent
+    TotalsComponent,
+    CellsComponent
   ],
   imports: [
     BrowserModule,

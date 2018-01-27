@@ -20,5 +20,13 @@ export class Product {
     setKeywordListFromText() {
       this.keywordList = this.keywordListText.split('\n');
       this.keywordList = _.uniq(this.keywordList);
+      const cleanedKeywordList = new Array<string>();
+      this.keywordList.forEach(function (keyword){
+        // tslint:disable-next-line:curly
+        if (keyword && keyword.length > 0 && keyword !== 'null') {
+          cleanedKeywordList.push(keyword);
+        }
+      });
+      this.keywordList = cleanedKeywordList;
     }
   }

@@ -11,6 +11,7 @@
     <input type="text" [(ngModel)]="project.asin">
   </h3>
   <a routerLink="/totals/{{project.name}}">Totals</a>
+  <a routerLink="/cells/{{project.name}}">Create Products from Copied Spreadsheet Cells</a>
 </div>
 <button (click)="onSaveProject()">Save Project</button>
 <div class="product-container">
