@@ -13,6 +13,8 @@ import { KeywordService } from '../keyword.service';
 export class ProjectComponent implements OnInit {
   project = new Project();
   isConfirmRemovePending: boolean;
+  isNew: boolean;
+  errorMessage: string;
 
 
   constructor(
@@ -26,6 +28,8 @@ export class ProjectComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isNew = true;
+    this.errorMessage = null;
     const id = this.route.snapshot.paramMap.get('id');
     this.project.name = id;
     // tslint:disable-next-line:curly
@@ -62,8 +66,20 @@ export class ProjectComponent implements OnInit {
   }
 
   onSaveProject(): void {
+    this.errorMessage = null;
+    // check if already there by name if saving a new project
+    if (this.isNew) {
+      const existingProject = this.keywordService.getProject(this.project.name);
+      if (existingProject) {
+        // TODO: alert error
+        this.errorMessage = 'Project with that name already exists';
+        return;
+      }
+    }
+
     // save with keywordService
     this.keywordService.saveProject(this.project);
+    this.isNew = false;
   }
 
   onLoadProject(): void {
@@ -71,6 +87,9 @@ export class ProjectComponent implements OnInit {
     this.project = this.keywordService.getProject(this.project.name);
     if (!this.project) {
       this.project = new Project();
+      this.isNew = true;
+    } else {
+      this.isNew = false;
     }
   }
 

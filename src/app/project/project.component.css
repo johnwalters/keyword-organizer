@@ -5,4 +5,8 @@ height: 90em;
     white-space:nowrap */
 }
 
+.error-messages {
+  color:red;
+}
+
 

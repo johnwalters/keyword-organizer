@@ -3,6 +3,7 @@ import { Project } from '../project';
 import { ActivatedRoute } from '@angular/router';
 import { KeywordService } from '../keyword.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { ExcelGridParser } from '../excelGridParser';
 
 
@@ -18,7 +19,8 @@ export class CellsComponent implements OnInit {
   constructor(
     private keywordService: KeywordService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -44,7 +46,7 @@ export class CellsComponent implements OnInit {
     this.project.products = ExcelGridParser.toProducts(this.copiedText);
     this.project.process();
     this.keywordService.saveProject(this.project);
-    this.location.back();
+    this.router.navigateByUrl('/totals/' + this.project.name);
   }
 
 }

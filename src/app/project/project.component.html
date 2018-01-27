@@ -1,4 +1,5 @@
 <div>
+  <div class="error-messages">{{errorMessage}}</div>
   <h3>Project&nbsp;&nbsp;&nbsp;Name:
     <input type="text" [(ngModel)]="project.name">
     <button class="btn btn-default btn-xs" (click)="onDelete()">Remove Project</button>
@@ -11,7 +12,8 @@
     <input type="text" [(ngModel)]="project.asin">
   </h3>
   <a routerLink="/totals/{{project.name}}">Totals</a>
-  <a routerLink="/cells/{{project.name}}">Create Products from Copied Spreadsheet Cells</a>
+  <a routerLink="/cells/{{project.name}}"
+    *ngIf="!isNew">Create Products from Copied Spreadsheet Cells</a>
 </div>
 <button (click)="onSaveProject()">Save Project</button>
 <div class="product-container">
