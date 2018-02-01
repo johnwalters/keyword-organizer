@@ -1,0 +1,27 @@
+table.keyword-list-table{
+  width:15em;
+  padding:0px;
+  margin-top:.5em;
+}
+
+table.keyword-list-table, th, td {
+  padding-left: .25em;
+  border: 1px solid lightgrey;
+}
+
+table.keyword-list-table tr {
+  line-height: 25px;
+}
+
+table.keyword-list-table tr {
+
+}
+
+
+
+div.product {
+  display:inline;
+  float:left;
+  margin:.2em;
+
+}

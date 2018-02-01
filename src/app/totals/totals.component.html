@@ -1,0 +1,22 @@
+<div>
+  <h3>Totals for Project&nbsp;&nbsp;&nbsp;Name: {{project.name}}</h3>
+</div>
+<button class="btn btn-default btn-xs"   (click)="project.process()">Process</button>
+<a routerLink="/project/{{project.name}}">Project</a>
+<div >
+  <table class="keyword-totals-table" >
+      <tr>
+          <th>Keyword</th>
+          <th>Count</th>
+          <th>Percent</th>
+      </tr>
+      <tbody >
+          <tr *ngFor='let keywordmeta of project.totalsList()'>
+              <td>{{keywordmeta.phrase}}</td>
+              <td>{{keywordmeta.count}}</td>
+              <td>{{keywordmeta.percent}}</td>
+            </tr>
+      </tbody>
+
+  </table>
+</div>

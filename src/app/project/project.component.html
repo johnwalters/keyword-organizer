@@ -1,0 +1,24 @@
+<div>
+  <div class="error-messages">{{errorMessage}}</div>
+  <h3>Project&nbsp;&nbsp;&nbsp;Name:
+    <input type="text" [(ngModel)]="project.name">
+    <button class="btn btn-default btn-xs" (click)="onDelete()">Remove Project</button>
+    <span *ngIf="isConfirmRemovePending" class="deleteConfirmPending">
+      <button class="btn btn-default btn-xs" (click)="onDeleteCancel()">Cancel Remove Project</button>
+      <button class="btn btn-danger btn-xs" (click)="onDeleteConfirm()">Confirm Remove Project</button>
+
+    </span>
+    <br/>Target ASIN:
+    <input type="text" [(ngModel)]="project.asin">
+  </h3>
+  <a routerLink="/totals/{{project.name}}">Totals</a>
+  <a routerLink="/cells/{{project.name}}"
+    *ngIf="!isNew">Create Products from Copied Spreadsheet Cells</a>
+</div>
+<button (click)="onSaveProject()">Save Project</button>
+<div class="product-container">
+  <div class="product" *ngFor="let item of project.products">
+    <app-product [product]="item"></app-product>
+  </div>
+</div>
+<button (click)="onAddProduct()">Add Product</button>

@@ -1,0 +1,6 @@
+<div>
+  <h3>Enter Copied Spreadsheet Cells for Project&nbsp;&nbsp;&nbsp;Name: {{project.name}}</h3>
+</div>
+<button class="btn btn-default btn-xs"   (click)="onProcess()">Parse Text into Products</button>
+<a routerLink="/project/{{project.name}}">Project</a><br/>
+<textarea class="cells-text" [(ngModel)]="copiedText" placeholder="cell data" rows="20"></textarea>

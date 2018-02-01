@@ -1,0 +1,7 @@
+Add product.notes
+persist keyword project (a group of products) (to local storage)
+restore keyword project (from local storage)
+project list
+
+
+// ng generate component heroes

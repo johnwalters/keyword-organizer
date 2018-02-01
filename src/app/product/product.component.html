@@ -1,0 +1,36 @@
+<div class="product" *ngIf="!product.isDeleted">
+    <button class="btn btn-default btn-xs" *ngIf="!isConfirmRemovePending"   (click)="onDelete()">Remove Product</button>
+    <span *ngIf="isConfirmRemovePending" class="deleteConfirmPending">
+        <button class="btn btn-default btn-xs"  (click)="onDeleteCancel()">Cancel Remove Product</button>
+        <button class="btn btn-danger btn-xs"  (click)="onDeleteConfirm()">Confirm Remove Product</button>
+
+    </span>
+  <h5>ASIN:
+    <input type="text" *ngIf="asinEditMode == MODE_EDIT" [(ngModel)]="product.asin">
+    <span *ngIf="asinEditMode == MODE_VIEW">{{product.asin}}</span>
+    <button class="btn btn-warning btn-xs" *ngIf="asinEditMode == MODE_EDIT" (click)="onSaveAsin()">Save ASIN</button>
+    <button class="btn btn-info btn-xs" *ngIf="asinEditMode == MODE_VIEW" (click)="onEnterAsinEditMode()">Edit</button>
+  </h5>
+  <div>
+    <span>keywords: </span>
+    <br>
+    <button class="btn btn-warning btn-xs" *ngIf="listEditMode == MODE_EDIT" (click)="onSaveList()">Save List</button>
+    <button class="btn btn-info btn-xs" *ngIf="listEditMode == MODE_VIEW" (click)="onEnterListEditMode()">Edit List</button>
+    <textarea *ngIf="listEditMode == MODE_EDIT" [(ngModel)]="product.keywordListText" placeholder="name" rows="100"></textarea>
+    <div *ngIf="listEditMode == MODE_VIEW">
+
+      <table class="keyword-list-table" >
+          <tr>
+              <th>Keyword</th>
+
+          </tr>
+          <tbody >
+        <tr *ngFor='let keyword of product.keywordList'>
+          <td>{{keyword}}</td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+    <!-- <button  (click)="onRemove()">Remove</button> -->
+  </div>
+</div>

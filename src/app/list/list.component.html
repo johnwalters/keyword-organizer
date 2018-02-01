@@ -1,0 +1,10 @@
+<h3 class="text-center">Projects</h3>
+<div class="grid grid-pad">
+    <a routerLink="/project/">Add New</a>
+  <a *ngFor="let project of projectList" class=""
+      routerLink="/project/{{project.name}}">
+    <div class="">
+      <h4>{{project.name}}</h4>
+    </div>
+  </a>
+</div>

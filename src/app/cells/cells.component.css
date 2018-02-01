@@ -1,0 +1,6 @@
+textarea.cells-text {
+  width:90em;
+  margin-left:10em;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
