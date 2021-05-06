@@ -25,7 +25,7 @@
     "angular-web-storage": "^2.0.0",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.2",
-    "underscore": "^1.8.3",
+    "underscore": "^1.12.1",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
